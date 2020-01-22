@@ -42,46 +42,85 @@ function checkObjectInside(object) {
     }
 }
 
-function arraySet(array, number, x) {
-    if(!(array[number] == null)) {
-        array[number] = x;
+function arraySet(inputArray, number, x) {
+    if(!(inputArray[number] == null)) {
+        inputArray[number] = x;
     }
 }
 
-function addAll(array) {
+function addAll(inputArray) {
     let reducer = (acc, cur) => acc + cur;
-    return array.reduce(reducer);
+    return inputArray.reduce(reducer);
 }
 
 function larger(a, b) {
     return Math.max(a, b);
 }
 
-function largest(array) {
+function largest(inputArray) {
     let reducer = (acc, cur) => Math.max(acc, cur);
-    return array.reduce(reducer);
+    return inputArray.reduce(reducer);
 }
 
-function compare(array1, array2) {
-    if(array1 === array2) {
-        return true;
+function compare(a, b) {
+    if (a === b) return true;
+    if (a == null || b == null) return false;
+    if (a.length != b.length) return false;
+  
+    for (var i = 0; i < a.length; ++i) {
+      if (a[i] !== b[i]) return false;
     }
-    if(array1.length =! array2.length) {
-        return false;
+    return true;
+}
+
+function addToAll(inputArray, x) {
+    for(let i=0; i<inputArray.length; i++) {
+        inputArray[i] += x;
     }
-    for(let i=0; i<array1.length; i++) {
-        if(array1[i]==!array2[i]) {
-            return false;
-        } else {
-            return true;
+    return inputArray;
+}
+
+let remembered;
+
+function rememberThis(inputValue) {
+    remembered = inputValue;
+}
+
+function nArray(n) {
+    let arrayResult = [];
+    for(let i=0; i<n; i++) {
+        arrayResult[i] = i+1;
+    }
+    return arrayResult;
+}
+
+function addAllOpt(inputArray) {
+    if(inputArray == null) {
+        return 0;
+    } else if(inputArray.length == 0) {
+        return 0;
+    } else {
+        let reducer = (acc, cur) => acc + cur;
+        return inputArray.reduce(reducer);
+    }
+}
+
+function divisors(inputArray, inputDivisor) {
+    let resultArray = [];
+    let x = 0;
+    for(let i=0; i<inputArray.length; i++) {
+        if(inputArray[i]%inputDivisor==0) {
+            resultArray[x] = inputArray[i];
+            x++;
         }
     }
+    return resultArray;
 }
 
-function addToAll(array, x) {
-    if(array===undefine)
-    for(let i=0; i<array.length; i++) {
-        array[i] = array[i] + x;
+function multiples(n, m) {
+    let resultArray = [];
+    for(let i=0; i<n; i++) {
+        resultArray[i] = (i+1)*m;
     }
-    return array;
+    return resultArray;
 }
